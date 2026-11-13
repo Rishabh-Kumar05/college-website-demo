@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Excellence University — Empowering Scholars</title>
+  <meta name="description" content="Unlock your academic potential with structured courses, elite faculty mentorship, and transparent campus resources at Excellence University.">
+  
+  <style>
+    @layer base { 
+      html, body { margin: 0; padding: 0; } 
+      body { overscroll-behavior: none; } 
+      main > :first-child { margin-top: 0 !important; } 
+      main > :last-child { margin-bottom: 0 !important; } 
+    } 
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #f1f4f9; }
+    ::-webkit-scrollbar-thumb { background: #c6c6ca; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #76777b; }
+
+    /* Custom Animations */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(1deg); }
+    }
+    @keyframes float-slow {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-16px) rotate(-1.5deg); }
+    }
+    @keyframes pulse-glow {
+      0%, 100% { opacity: 0.3; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.08); }
+    }
+    @keyframes shimmer {
+      100% { transform: translateX(100%); }
+    }
+    
+    .animate-float { animation: float 5s ease-in-out infinite; }
+    .animate-float-slow { animation: float-slow 7s ease-in-out infinite; }
+    .animate-pulse-glow { animation: pulse-glow 4s ease-in-out infinite; }
+    
+    /* Scroll Reveal Initial States */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-on-scroll.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Shimmer effect helper */
+    .shimmer-card::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0; bottom: 0; left: 0;
+      transform: translateX(-100%);
+      background-image: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0,
+        rgba(255, 255, 255, 0.08) 20%,
+        rgba(255, 255, 255, 0.2) 60%,
+        rgba(255, 255, 255, 0)
+      );
+      pointer-events: none;
+    }
+    .shimmer-card:hover::after {
+      animation: shimmer 1.2s infinite;
+    }
+  </style>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary-fixed-dim": "#c6c6ca",
+            "on-secondary": "#ffffff",
+            "secondary-container": "#fed65b",
+            "secondary-fixed-dim": "#e9c349",
+            "primary": "#000000",
+            "surface-container-high": "#e5e8ee",
+            "on-secondary-fixed": "#241a00",
+            "tertiary-container": "#191c1d",
+            "surface-dim": "#d7dadf",
+            "on-tertiary-fixed": "#191c1d",
+            "on-primary-fixed-variant": "#45474a",
+            "outline": "#76777b",
+            "on-error": "#ffffff",
+            "surface-tint": "#5d5e62",
+            "error": "#ba1a1a",
+            "on-primary": "#ffffff",
+            "secondary-fixed": "#ffe088",
+            "error-container": "#ffdad6",
+            "surface-container-low": "#f1f4f9",
+            "surface-container-highest": "#e0e3e8",
+            "surface-container": "#ebeef3",
+            "on-secondary-container": "#745c00",
+            "on-background": "#181c20",
+            "on-tertiary-container": "#828485",
+            "outline-variant": "#c6c6ca",
+            "background": "#f7f9ff",
+            "on-surface-variant": "#45474a",
+            "primary-container": "#1a1c1f",
+            "surface-container-lowest": "#ffffff",
+            "surface-bright": "#f7f9ff",
+            "surface": "#f7f9ff",
+            "on-tertiary": "#ffffff",
+            "inverse-on-surface": "#eef1f6",
+            "inverse-primary": "#c6c6ca",
+            "tertiary-fixed-dim": "#c5c7c8",
+            "surface-variant": "#e0e3e8",
+            "on-primary-fixed": "#1a1c1f",
+            "on-surface": "#181c20",
+            "tertiary": "#000000",
+            "on-secondary-fixed-variant": "#574500",
+            "secondary": "#735c00",
+            "inverse-surface": "#2d3135",
+            "on-tertiary-fixed-variant": "#454748",
+            "tertiary-fixed": "#e1e3e4",
+            "on-primary-container": "#838488",
+            "primary-fixed": "#e2e2e6",
+            "on-error-container": "#93000a"
+          },
+          borderRadius: {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          spacing: {
+            "margin": "2rem",
+            "space-xl": "4rem",
+            "space-md": "1.5rem",
+            "space-lg": "2.5rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.75rem",
+            "gutter": "1.5rem"
+          },
+          fontFamily: {
+            headline: ["Newsreader", "serif"],
+            body: ["Inter", "sans-serif"],
+            "headline-lg-mobile": ["Newsreader", "serif"],
+            "headline-md": ["Newsreader", "serif"],
+            "headline-sm": ["Newsreader", "serif"],
+            "body-lg": ["Inter", "sans-serif"],
+            "body-sm": ["Inter", "sans-serif"],
+            "headline-xl-mobile": ["Newsreader", "serif"],
+            "label-lg": ["Inter", "sans-serif"],
+            "body-md": ["Inter", "sans-serif"],
+            "headline-xl": ["Newsreader", "serif"],
+            "label-md": ["Inter", "sans-serif"],
+            "headline-lg": ["Newsreader", "serif"]
+          },
+          fontSize: {
+            "headline-lg-mobile": ["28px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-md": ["28px", { "lineHeight": "1.3", "fontWeight": "500" }],
+            "headline-sm": ["22px", { "lineHeight": "1.4", "fontWeight": "500" }],
+            "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+            "body-sm": ["13px", { "lineHeight": "1.5", "fontWeight": "400" }],
+            "headline-xl-mobile": ["36px", { "lineHeight": "1.15", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "label-lg": ["14px", { "lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "body-md": ["15px", { "lineHeight": "1.6", "fontWeight": "400" }],
+            "headline-xl": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "label-md": ["12px", { "lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "headline-lg": ["36px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..205" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-surface font-body text-on-surface antialiased selection:bg-secondary-container selection:text-on-secondary-container">
+
+  <!-- Floating Background Lights / Ambience -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+    <div class="absolute -top-40 -left-40 w-96 h-96 bg-secondary-container/15 rounded-full blur-3xl animate-pulse-glow"></div>
+    <div class="absolute top-1/2 -right-40 w-[30rem] h-[30rem] bg-amber-500/10 rounded-full blur-3xl animate-pulse-glow" style="animation-delay: 2s;"></div>
+  </div>
+
+  <!-- Header -->
+  <header id="main-header" class="fixed top-0 w-full z-50 transition-all duration-300 bg-surface/85 backdrop-blur-xl border-b border-outline/10 shadow-[0_2px_12px_rgba(0,0,0,0.03)]">
+    <div class="h-20 max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#home" class="flex items-center gap-space-sm group">
+        <div class="w-10 h-10 rounded-xl bg-primary-container text-secondary-container flex items-center justify-center font-headline font-bold text-xl shadow-md border border-secondary-container/30 group-hover:scale-105 transition-transform">
+          <span class="material-symbols-outlined text-2xl">school</span>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-headline-sm font-headline font-bold tracking-tight text-on-surface leading-tight">Excellence University</span>
+          <span class="text-[10px] tracking-widest uppercase text-secondary font-semibold">Academic Excellence</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-1 lg:gap-2">
+        <a href="#home" class="nav-link px-3.5 py-1.5 rounded-lg text-label-lg font-medium transition-all bg-secondary-container text-on-secondary-container shadow-sm" data-target="home">Home</a>
+        <a href="#office" class="nav-link px-3.5 py-1.5 rounded-lg text-label-lg font-medium text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-target="office">Office</a>
+        <a href="#teachers" class="nav-link px-3.5 py-1.5 rounded-lg text-label-lg font-medium text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-target="teachers">Teachers</a>
+        <a href="#students" class="nav-link px-3.5 py-1.5 rounded-lg text-label-lg font-medium text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-target="students">Students</a>
+        <a href="#courses" class="nav-link px-3.5 py-1.5 rounded-lg text-label-lg font-medium text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-target="courses">Courses</a>
+        <a href="#calendar" class="nav-link px-3.5 py-1.5 rounded-lg text-label-lg font-medium text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-target="calendar">Calendar</a>
+      </nav>
+
+      <!-- Right Header Actions -->
+      <div class="flex items-center gap-space-sm">
+        <button onclick="openPortalModal()" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface text-label-md font-medium border border-outline/10 transition-transform active:scale-95 shadow-sm">
+          <span class="material-symbols-outlined text-lg">account_circle</span>
+          <span>Portal Login</span>
+        </button>
+        <button onclick="openAppointmentModal('General Counseling')" class="px-4 py-2 rounded-lg bg-primary text-on-primary hover:bg-neutral-800 text-label-md font-medium transition-all hover:shadow-md active:scale-95">
+          Admissions
+        </button>
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-on-surface hover:bg-surface-container transition-colors" aria-label="Toggle Navigation">
+          <span class="material-symbols-outlined text-2xl">menu</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-menu" class="hidden md:hidden px-6 pt-3 pb-6 bg-surface-container-lowest/95 backdrop-blur-xl border-b border-outline/10 space-y-2">
+      <a href="#home" class="mobile-nav-link block px-4 py-2.5 rounded-lg text-label-lg font-medium bg-secondary-container text-on-secondary-container">Home</a>
+      <a href="#office" class="mobile-nav-link block px-4 py-2.5 rounded-lg text-label-lg font-medium text-on-surface-variant hover:bg-surface-container">Office Directory</a>
+      <a href="#teachers" class="mobile-nav-link block px-4 py-2.5 rounded-lg text-label-lg font-medium text-on-surface-variant hover:bg-surface-container">Teachers & Faculty</a>
+      <a href="#students" class="mobile-nav-link block px-4 py-2.5 rounded-lg text-label-lg font-medium text-on-surface-variant hover:bg-surface-container">Students Hub</a>
+      <a href="#courses" class="mobile-nav-link block px-4 py-2.5 rounded-lg text-label-lg font-medium text-on-surface-variant hover:bg-surface-container">Featured Courses</a>
+      <a href="#calendar" class="mobile-nav-link block px-4 py-2.5 rounded-lg text-label-lg font-medium text-on-surface-variant hover:bg-surface-container">Academic Calendar</a>
+    </div>
+  </header>
+
+  <main class="w-full pt-20 bg-surface relative z-10">
+    <div class="flex flex-col w-full bg-surface">
+
+      <!-- Hero Section -->
+      <section id="home" class="relative w-full overflow-hidden bg-primary-container text-on-primary-container py-space-xl px-6 lg:px-12 -mt-20 pt-36">
+        
+        <!-- Animated Background Ornaments -->
+        <div class="absolute inset-0 opacity-25 bg-cover bg-center pointer-events-none transition-transform duration-1000 scale-105" 
+             style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCEftLISOoUY5xvK0RFt7hssZrsCTkcdEHhXCujk06rpilZLCM_iaTPMV7nUUwZwVJTWKossDY-eDfuSY6NVLh3uFlTWEwpRTr0IbiQZWRwofSLmyBpx6gFPAANGsgZjeMF4vWyaeDkUdZAet4cN99J2FYddWGD-lTZRvm-Q2-2KiAiXQl4B1RjAp_Y-CDkiHrC6roP-60MXqrK8_s_XdsSAVGsv0nrjn3US2859B9r8uQB4IemprKx')">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-r from-primary-container via-primary-container/95 to-primary-container/40"></div>
+        
+        <!-- Floating Orbit Rings -->
+        <div class="absolute -top-24 right-10 w-96 h-96 border border-secondary-container/20 rounded-full animate-float-slow pointer-events-none"></div>
+        <div class="absolute top-1/4 right-1/3 w-64 h-64 border border-outline/20 rounded-full animate-float pointer-events-none" style="animation-delay: 1.5s;"></div>
+
+        <div class="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-center">
+          
+          <!-- Hero Text -->
+          <div class="lg:col-span-7 flex flex-col items-start reveal-on-scroll">
+            
+            <div class="inline-flex items-center gap-space-xs px-3.5 py-1.5 rounded-full bg-secondary-container/15 text-secondary-fixed mb-space-md text-label-md uppercase tracking-wider border border-secondary-container/30 shadow-sm backdrop-blur-md">
+              <span class="w-2 h-2 rounded-full bg-secondary-container animate-ping"></span>
+              <span>Elite Academic Portal &bull; 2024-2025</span>
+            </div>
+
+            <h1 class="text-headline-xl text-on-primary font-headline mb-space-md tracking-tight leading-[1.12]">
+              Empowering College Students for <span class="text-transparent bg-clip-text bg-gradient-to-r from-secondary-fixed via-secondary-container to-amber-200">Academic Excellence</span>
+            </h1>
+
+            <p class="text-body-lg text-primary-fixed-dim mb-space-lg max-w-2xl font-body leading-relaxed">
+              Unlock your true academic potential with structured courses, elite mentorship, transparent office resources, and a streamlined calendar built for visionary scholars.
+            </p>
+
+            <div class="flex flex-wrap items-center gap-space-md">
+              <a href="#courses" class="px-7 py-3.5 rounded-xl bg-secondary-container text-on-secondary-container font-semibold text-label-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_8px_25px_rgba(254,214,91,0.35)] flex items-center gap-space-xs active:scale-95 group">
+                <span>Explore Courses</span>
+                <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+              </a>
+
+              <a href="#calendar" class="px-7 py-3.5 rounded-xl bg-surface/10 text-on-primary font-medium text-label-lg border border-outline/40 hover:bg-surface/20 hover:border-secondary-container/40 transition-all flex items-center gap-2 backdrop-blur-sm">
+                <span class="material-symbols-outlined text-lg text-secondary-fixed">calendar_today</span>
+                <span>View Calendar</span>
+              </a>
+            </div>
+
+            <!-- Trust highlights -->
+            <div class="mt-8 pt-6 border-t border-outline/20 flex flex-wrap items-center gap-6 text-body-sm text-primary-fixed-dim">
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-secondary text-base">verified</span>
+                <span>Accredited Curriculum</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-secondary text-base">psychology</span>
+                <span>1-on-1 Faculty Mentorship</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-secondary text-base">hub</span>
+                <span>100% Digital Office Access</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Hero Image Card with Interactive Floating Effect -->
+          <div class="lg:col-span-5 relative reveal-on-scroll" style="transition-delay: 150ms;">
+            <div id="hero-card" class="relative w-full aspect-square rounded-2xl overflow-hidden shadow-2xl border border-secondary-container/30 group transition-transform duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+              <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
+                   alt="Academic Excellence Visual" 
+                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEftLISOoUY5xvK0RFt7hssZrsCTkcdEHhXCujk06rpilZLCM_iaTPMV7nUUwZwVJTWKossDY-eDfuSY6NVLh3uFlTWEwpRTr0IbiQZWRwofSLmyBpx6gFPAANGsgZjeMF4vWyaeDkUdZAet4cN99J2FYddWGD-lTZRvm-Q2-2KiAiXQl4B1RjAp_Y-CDkiHrC6roP-60MXqrK8_s_XdsSAVGsv0nrjn3US2859B9r8uQB4IemprKx">
+              
+              <!-- Subtle overlay gradient -->
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-space-md">
+                <div class="text-on-primary">
+                  <div class="flex items-center gap-2 mb-1">
+                    <span class="inline-block w-2 h-2 rounded-full bg-secondary-container"></span>
+                    <p class="text-label-md text-secondary-fixed uppercase tracking-wider font-semibold">Class of 2024 &bull; Convocation</p>
+                  </div>
+                  <p class="text-headline-sm font-headline font-semibold">Distinction in Every Step</p>
+                  <p class="text-body-sm text-primary-fixed-dim mt-1">Join over 15,000 alumni leading globally in technology, sciences, and humanities.</p>
+                </div>
+              </div>
+
+              <!-- Floating badge in corner -->
+              <div class="absolute top-4 right-4 bg-primary-container/80 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-secondary-container/40 flex items-center gap-2 text-on-primary text-xs font-medium shadow-lg animate-float">
+                <span class="material-symbols-outlined text-secondary text-sm">stars</span>
+                <span>Top Ranked University</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Quick Action Cards Section -->
+      <section class="max-w-7xl mx-auto px-6 lg:px-12 -mt-12 relative z-20 w-full mb-space-xl">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+          
+          <!-- Office Card -->
+          <a href="#office" class="group bg-surface-container-lowest p-space-lg rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 border border-outline/10 flex flex-col justify-between relative overflow-hidden transform hover:-translate-y-1.5 reveal-on-scroll">
+            <div class="absolute top-0 left-0 w-full h-1.5 bg-secondary-container opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <div>
+              <div class="w-14 h-14 rounded-xl bg-secondary-container/20 text-on-secondary-container flex items-center justify-center mb-space-md group-hover:bg-secondary-container group-hover:text-on-secondary transition-colors duration-300 shadow-sm">
+                <span class="material-symbols-outlined text-3xl">apartment</span>
+              </div>
+              <h3 class="text-headline-sm text-on-surface font-headline font-bold mb-space-xs">Office</h3>
+              <p class="text-body-sm text-on-surface-variant">Administrative directory, hours, transcript services, and direct office bookings.</p>
+            </div>
+            <div class="mt-space-lg flex items-center gap-space-xs text-label-lg text-secondary font-semibold group-hover:translate-x-1.5 transition-transform">
+              <span>Access Office</span>
+              <span class="material-symbols-outlined text-sm">east</span>
+            </div>
+          </a>
+
+          <!-- Teachers Card -->
+          <a href="#teachers" class="group bg-surface-container-lowest p-space-lg rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 border border-outline/10 flex flex-col justify-between relative overflow-hidden transform hover:-translate-y-1.5 reveal-on-scroll" style="transition-delay: 80ms;">
+            <div class="absolute top-0 left-0 w-full h-1.5 bg-secondary-container opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <div>
+              <div class="w-14 h-14 rounded-xl bg-secondary-container/20 text-on-secondary-container flex items-center justify-center mb-space-md group-hover:bg-secondary-container group-hover:text-on-secondary transition-colors duration-300 shadow-sm">
+                <span class="material-symbols-outlined text-3xl">school</span>
+              </div>
+              <h3 class="text-headline-sm text-on-surface font-headline font-bold mb-space-xs">Teachers</h3>
+              <p class="text-body-sm text-on-surface-variant">Connect with esteemed faculty members, schedule 1-on-1 hours, and review credentials.</p>
+            </div>
+            <div class="mt-space-lg flex items-center gap-space-xs text-label-lg text-secondary font-semibold group-hover:translate-x-1.5 transition-transform">
+              <span>Meet Faculty</span>
+              <span class="material-symbols-outlined text-sm">east</span>
+            </div>
+          </a>
+
+          <!-- Students Card -->
+          <a href="#students" class="group bg-surface-container-lowest p-space-lg rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 border border-outline/10 flex flex-col justify-between relative overflow-hidden transform hover:-translate-y-1.5 reveal-on-scroll" style="transition-delay: 160ms;">
+            <div class="absolute top-0 left-0 w-full h-1.5 bg-secondary-container opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <div>
+              <div class="w-14 h-14 rounded-xl bg-secondary-container/20 text-on-secondary-container flex items-center justify-center mb-space-md group-hover:bg-secondary-container group-hover:text-on-secondary transition-colors duration-300 shadow-sm">
+                <span class="material-symbols-outlined text-3xl">group</span>
+              </div>
+              <h3 class="text-headline-sm text-on-surface font-headline font-bold mb-space-xs">Students</h3>
+              <p class="text-body-sm text-on-surface-variant">Student portals, campus societies, peer study groups, and community achievements.</p>
+            </div>
+            <div class="mt-space-lg flex items-center gap-space-xs text-label-lg text-secondary font-semibold group-hover:translate-x-1.5 transition-transform">
+              <span>Student Hub</span>
+              <span class="material-symbols-outlined text-sm">east</span>
+            </div>
+          </a>
+
+          <!-- Academic Calendar Card -->
+          <a href="#calendar" class="group bg-surface-container-lowest p-space-lg rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 border border-outline/10 flex flex-col justify-between relative overflow-hidden transform hover:-translate-y-1.5 reveal-on-scroll" style="transition-delay: 240ms;">
+            <div class="absolute top-0 left-0 w-full h-1.5 bg-secondary-container opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <div>
+              <div class="w-14 h-14 rounded-xl bg-secondary-container/20 text-on-secondary-container flex items-center justify-center mb-space-md group-hover:bg-secondary-container group-hover:text-on-secondary transition-colors duration-300 shadow-sm">
+                <span class="material-symbols-outlined text-3xl">calendar_month</span>
+              </div>
+              <h3 class="text-headline-sm text-on-surface font-headline font-bold mb-space-xs">Academic Calendar</h3>
+              <p class="text-body-sm text-on-surface-variant">Key milestone dates, examination schedules, public holidays, and term deadlines.</p>
+            </div>
+            <div class="mt-space-lg flex items-center gap-space-xs text-label-lg text-secondary font-semibold group-hover:translate-x-1.5 transition-transform">
+              <span>View Schedule</span>
+              <span class="material-symbols-outlined text-sm">east</span>
+            </div>
+          </a>
+
+        </div>
+      </section>
+
+      <!-- Office Directory Section -->
+      <section id="office" class="max-w-7xl mx-auto px-6 lg:px-12 py-space-xl scroll-mt-24">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-space-lg gap-space-md reveal-on-scroll">
+          <div>
+            <span class="text-label-md text-secondary uppercase tracking-widest block mb-space-xs font-semibold">Campus Administration</span>
+            <h2 class="text-headline-lg text-on-surface font-headline">Office &amp; Student Support Services</h2>
+            <p class="text-body-md text-on-surface-variant max-w-xl mt-1">Get immediate assistance with enrollments, official documentation, career mentorship, and academic counseling.</p>
+          </div>
+          <button onclick="openAppointmentModal('General Office')" class="px-5 py-2.5 rounded-lg bg-surface-container-high hover:bg-secondary-container hover:text-on-secondary-container text-on-surface font-medium text-label-md border border-outline/20 transition-all flex items-center gap-2 shadow-sm">
+            <span class="material-symbols-outlined text-lg">event</span>
+            <span>Book In-Person Appointment</span>
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline/10 shadow-sm hover:shadow-lg transition-all reveal-on-scroll">
+            <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-900 flex items-center justify-center mb-4">
+              <span class="material-symbols-outlined text-2xl">description</span>
+            </div>
+            <h3 class="text-lg font-headline font-bold text-on-surface mb-1">Registrar's Office</h3>
+            <p class="text-body-sm text-on-surface-variant mb-4">Transcripts, enrollment verifications, degree audits, and diploma distribution.</p>
+            <div class="text-xs text-on-surface-variant space-y-1 mb-4 pt-3 border-t border-outline/10">
+              <div class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">schedule</span> Mon - Fri: 8:30 AM - 4:30 PM</div>
+              <div class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">mail</span> registrar@excellence.edu</div>
+            </div>
+            <button onclick="openAppointmentModal('Registrar Office')" class="w-full py-2 px-3 rounded-lg bg-surface-container hover:bg-secondary-container hover:text-on-secondary-container text-xs font-semibold text-on-surface transition-colors">Request Appointment</button>
+          </div>
+
+          <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline/10 shadow-sm hover:shadow-lg transition-all reveal-on-scroll" style="transition-delay: 80ms;">
+            <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-900 flex items-center justify-center mb-4">
+              <span class="material-symbols-outlined text-2xl">payments</span>
+            </div>
+            <h3 class="text-lg font-headline font-bold text-on-surface mb-1">Financial Aid &amp; Billing</h3>
+            <p class="text-body-sm text-on-surface-variant mb-4">Scholarships, payment plans, FAFSA advisory, and student work-study programs.</p>
+            <div class="text-xs text-on-surface-variant space-y-1 mb-4 pt-3 border-t border-outline/10">
+              <div class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">schedule</span> Mon - Fri: 9:00 AM - 5:00 PM</div>
+              <div class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">mail</span> financialaid@excellence.edu</div>
+            </div>
+            <button onclick="openAppointmentModal('Financial Aid')" class="w-full py-2 px-3 rounded-lg bg-surface-container hover:bg-secondary-container hover:text-on-secondary-container text-xs font-semibold text-on-surface transition-colors">Request Appointment</button>
+          </div>
+
+          <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline/10 shadow-sm hover:shadow-lg transition-all reveal-on-scroll" style="transition-delay: 160ms;">
+            <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-900 flex items-center justify-center mb-4">
+              <span class="material-symbols-outlined text-2xl">work</span>
+            </div>
+            <h3 class="text-lg font-headline font-bold text-on-surface mb-1">Career &amp; Internships</h3>
+            <p class="text-body-sm text-on-surface-variant mb-4">Resume reviews, corporate mock interviews, alumni recruiting, and internships.</p>
+            <div class="text-xs text-on-surface-variant space-y-1 mb-4 pt-3 border-t border-outline/10">
+              <div class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">schedule</span> Mon - Thu: 9:00 AM - 6:00 PM</div>
+              <div class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">mail</span> careers@excellence.edu</div>
+            </div>
+            <button onclick="openAppointmentModal('Career Center')" class="w-full py-2 px-3 rounded-lg bg-surface-container hover:bg-secondary-container hover:text-on-secondary-container text-xs font-semibold text-on-surface transition-colors">Request Appointment</button>
+          </div>
+
+          <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline/10 shadow-sm hover:shadow-lg transition-all reveal-on-scroll" style="transition-delay: 240ms;">
+            <div class="w-12 h-12 rounded-xl bg-purple-100 text-purple-900 flex items-center justify-center mb-4">
+              <span class="material-symbols-outlined text-2xl">support_agent</span>
+            </div>
+            <h3 class="text-lg font-headline font-bold text-on-surface mb-1">Advising &amp; Wellness</h3>
+            <p class="text-body-sm text-on-surface-variant mb-4">Personal academic counseling, mental health resources, and accessibility services.</p>
+            <div class="text-xs text-on-surface-variant space-y-1 mb-4 pt-3 border-t border-outline/10">
+              <div class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">schedule</span> 24/7 Helpline &amp; Daily Walk-ins</div>
+              <div class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">mail</span> advising@excellence.edu</div>
+            </div>
+            <button onclick="openAppointmentModal('Student Wellness')" class="w-full py-2 px-3 rounded-lg bg-surface-container hover:bg-secondary-container hover:text-on-secondary-container text-xs font-semibold text-on-surface transition-colors">Request Appointment</button>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Teachers / Faculty Section -->
+      <section id="teachers" class="max-w-7xl mx-auto px-6 lg:px-12 py-space-xl bg-surface-container-low/50 rounded-3xl my-8 scroll-mt-24">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-space-lg gap-space-md reveal-on-scroll">
+          <div>
+            <span class="text-label-md text-secondary uppercase tracking-widest block mb-space-xs font-semibold">Faculty Roster</span>
+            <h2 class="text-headline-lg text-on-surface font-headline">Meet Our Esteemed Faculty</h2>
+            <p class="text-body-md text-on-surface-variant max-w-xl mt-1">Distinguished researchers, award-winning authors, and industry pioneers dedicated to student success.</p>
+          </div>
+          
+          <!-- Faculty Filter buttons -->
+          <div class="flex flex-wrap gap-2">
+            <button onclick="filterFaculty('all', this)" class="faculty-filter-btn px-4 py-1.5 rounded-lg text-xs font-semibold bg-secondary-container text-on-secondary-container transition-all">All</button>
+            <button onclick="filterFaculty('cs', this)" class="faculty-filter-btn px-4 py-1.5 rounded-lg text-xs font-semibold bg-surface-container text-on-surface-variant hover:text-on-surface transition-all">Computer Science</button>
+            <button onclick="filterFaculty('arch', this)" class="faculty-filter-btn px-4 py-1.5 rounded-lg text-xs font-semibold bg-surface-container text-on-surface-variant hover:text-on-surface transition-all">Architecture</button>
+            <button onclick="filterFaculty('econ', this)" class="faculty-filter-btn px-4 py-1.5 rounded-lg text-xs font-semibold bg-surface-container text-on-surface-variant hover:text-on-surface transition-all">Economics</button>
+          </div>
+        </div>
+
+        <div id="faculty-grid" class="grid grid-cols-1 md:grid-cols-3 gap-space-lg">
+          
+          <!-- Faculty 1 -->
+          <div class="faculty-card bg-surface-container-lowest rounded-2xl overflow-hidden border border-outline/10 shadow-sm hover:shadow-xl transition-all duration-300 p-6 flex flex-col justify-between reveal-on-scroll" data-dept="cs">
+            <div>
+              <div class="flex items-center gap-4 mb-4">
+                <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-amber-400 to-amber-200 p-0.5 shadow-md">
+                  <div class="w-full h-full rounded-full bg-primary-container text-secondary-container flex items-center justify-center font-bold text-xl">
+                    AS
+                  </div>
+                </div>
+                <div>
+                  <h3 class="text-headline-sm font-headline font-bold text-on-surface">Prof. A. Sharma</h3>
+                  <p class="text-xs font-semibold text-secondary uppercase tracking-wider">Chair of Computer Science</p>
+                  <p class="text-xs text-on-surface-variant">Ph.D., MIT &bull; 14+ Yrs Research</p>
+                </div>
+              </div>
+              <p class="text-body-sm text-on-surface-variant mb-4">
+                Specializes in algorithmic complexity, distributed blockchain systems, and quantum neural computing architectures.
+              </p>
+              <div class="bg-surface-container-low p-3 rounded-xl text-xs space-y-1 mb-4">
+                <div class="flex justify-between text-on-surface">
+                  <span class="text-on-surface-variant">Office Hours:</span>
+                  <span class="font-medium">Tue & Thu (2 - 4 PM)</span>
+                </div>
+                <div class="flex justify-between text-on-surface">
+                  <span class="text-on-surface-variant">Active Courses:</span>
+                  <span class="font-medium">CS 301, CS 492</span>
+                </div>
+              </div>
+            </div>
+            <button onclick="openAppointmentModal('Prof. A. Sharma (CS)')" class="w-full py-2.5 rounded-xl bg-primary text-on-primary hover:bg-secondary hover:text-on-secondary text-label-md font-medium transition-colors flex items-center justify-center gap-2">
+              <span class="material-symbols-outlined text-sm">calendar_add_on</span>
+              <span>Schedule Office Hour</span>
+            </button>
+          </div>
+
+          <!-- Faculty 2 -->
+          <div class="faculty-card bg-surface-container-lowest rounded-2xl overflow-hidden border border-outline/10 shadow-sm hover:shadow-xl transition-all duration-300 p-6 flex flex-col justify-between reveal-on-scroll" style="transition-delay: 100ms;" data-dept="arch">
+            <div>
+              <div class="flex items-center gap-4 mb-4">
+                <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-teal-400 to-emerald-200 p-0.5 shadow-md">
+                  <div class="w-full h-full rounded-full bg-primary-container text-secondary-container flex items-center justify-center font-bold text-xl">
+                    MV
+                  </div>
+                </div>
+                <div>
+                  <h3 class="text-headline-sm font-headline font-bold text-on-surface">Dr. M. Varma</h3>
+                  <p class="text-xs font-semibold text-secondary uppercase tracking-wider">Dean of Architecture &amp; Urbanism</p>
+                  <p class="text-xs text-on-surface-variant">Ph.D., ETH Zurich &bull; RIBA Fellow</p>
+                </div>
+              </div>
+              <p class="text-body-sm text-on-surface-variant mb-4">
+                Leading authority on biophilic skyscrapers, sustainable community urban design, and zero-carbon building frameworks.
+              </p>
+              <div class="bg-surface-container-low p-3 rounded-xl text-xs space-y-1 mb-4">
+                <div class="flex justify-between text-on-surface">
+                  <span class="text-on-surface-variant">Office Hours:</span>
+                  <span class="font-medium">Mon & Wed (10 AM - 12 PM)</span>
+                </div>
+                <div class="flex justify-between text-on-surface">
+                  <span class="text-on-surface-variant">Active Courses:</span>
+                  <span class="font-medium">ARCH 210, URB 405</span>
+                </div>
+              </div>
+            </div>
+            <button onclick="openAppointmentModal('Dr. M. Varma (Arch)')" class="w-full py-2.5 rounded-xl bg-primary text-on-primary hover:bg-secondary hover:text-on-secondary text-label-md font-medium transition-colors flex items-center justify-center gap-2">
+              <span class="material-symbols-outlined text-sm">calendar_add_on</span>
+              <span>Schedule Office Hour</span>
+            </button>
+          </div>
+
+          <!-- Faculty 3 -->
+          <div class="faculty-card bg-surface-container-lowest rounded-2xl overflow-hidden border border-outline/10 shadow-sm hover:shadow-xl transition-all duration-300 p-6 flex flex-col justify-between reveal-on-scroll" style="transition-delay: 200ms;" data-dept="econ">
+            <div>
+              <div class="flex items-center gap-4 mb-4">
+                <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-purple-400 to-indigo-200 p-0.5 shadow-md">
+                  <div class="w-full h-full rounded-full bg-primary-container text-secondary-container flex items-center justify-center font-bold text-xl">
+                    RI
+                  </div>
+                </div>
+                <div>
+                  <h3 class="text-headline-sm font-headline font-bold text-on-surface">Prof. R. Iyer</h3>
+                  <p class="text-xs font-semibold text-secondary uppercase tracking-wider">Prof. of Global Macroeconomics</p>
+                  <p class="text-xs text-on-surface-variant">Ph.D., Oxford &bull; Former IMF Advisor</p>
+                </div>
+              </div>
+              <p class="text-body-sm text-on-surface-variant mb-4">
+                Focuses on sovereign monetary policies, quantitative easing simulations, and developing market microfinance initiatives.
+              </p>
+              <div class="bg-surface-container-low p-3 rounded-xl text-xs space-y-1 mb-4">
+                <div class="flex justify-between text-on-surface">
+                  <span class="text-on-surface-variant">Office Hours:</span>
+                  <span class="font-medium">Fri (1 PM - 4 PM)</span>
+                </div>
+                <div class="flex justify-between text-on-surface">
+                  <span class="text-on-surface-variant">Active Courses:</span>
+                  <span class="font-medium">ECON 104, FIN 520</span>
+                </div>
+              </div>
+            </div>
+            <button onclick="openAppointmentModal('Prof. R. Iyer (Econ)')" class="w-full py-2.5 rounded-xl bg-primary text-on-primary hover:bg-secondary hover:text-on-secondary text-label-md font-medium transition-colors flex items-center justify-center gap-2">
+              <span class="material-symbols-outlined text-sm">calendar_add_on</span>
+              <span>Schedule Office Hour</span>
+            </button>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Students Hub Section -->
+      <section id="students" class="max-w-7xl mx-auto px-6 lg:px-12 py-space-xl scroll-mt-24">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-space-lg gap-space-md reveal-on-scroll">
+          <div>
+            <span class="text-label-md text-secondary uppercase tracking-widest block mb-space-xs font-semibold">Campus Life</span>
+            <h2 class="text-headline-lg text-on-surface font-headline">Student Hub &amp; Communities</h2>
+            <p class="text-body-md text-on-surface-variant max-w-xl mt-1">Explore 80+ student-led clubs, research fellowships, collaborative maker spaces, and student representation.</p>
+          </div>
+          <button onclick="showToast('Student Clubs Directory opened! Check your student inbox for events.')" class="px-5 py-2.5 rounded-lg bg-secondary-container text-on-secondary-container font-semibold text-label-md transition-transform hover:scale-105 shadow-md flex items-center gap-2">
+            <span class="material-symbols-outlined text-lg">explore</span>
+            <span>Join a Student Club</span>
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline/10 shadow-sm hover:shadow-xl transition-all reveal-on-scroll">
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-secondary-container/20 text-on-secondary-container flex items-center justify-center">
+                <span class="material-symbols-outlined text-2xl">memory</span>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-surface-container text-xs font-bold text-secondary">320 Members</span>
+            </div>
+            <h3 class="text-headline-sm font-headline font-bold text-on-surface mb-2">AI &amp; Robotics Guild</h3>
+            <p class="text-body-sm text-on-surface-variant mb-4">Weekly hackathons, drone fabrication workshops, and entry into international robotics tournaments.</p>
+            <div class="flex items-center justify-between pt-4 border-t border-outline/10">
+              <span class="text-xs text-on-surface-variant">Meets Wednesdays &bull; Lab 4B</span>
+              <button onclick="showToast('Applied to join AI & Robotics Guild!')" class="text-label-md font-semibold text-secondary hover:underline">Apply Now &rarr;</button>
+            </div>
+          </div>
+
+          <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline/10 shadow-sm hover:shadow-xl transition-all reveal-on-scroll" style="transition-delay: 80ms;">
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-secondary-container/20 text-on-secondary-container flex items-center justify-center">
+                <span class="material-symbols-outlined text-2xl">architecture</span>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-surface-container text-xs font-bold text-secondary">195 Members</span>
+            </div>
+            <h3 class="text-headline-sm font-headline font-bold text-on-surface mb-2">Sustainable Design Collective</h3>
+            <p class="text-body-sm text-on-surface-variant mb-4">Hands-on architectural modeling, 3D clay printing, and sustainable urban revitalizations for local districts.</p>
+            <div class="flex items-center justify-between pt-4 border-t border-outline/10">
+              <span class="text-xs text-on-surface-variant">Meets Thursdays &bull; Studio 1</span>
+              <button onclick="showToast('Applied to join Sustainable Design Collective!')" class="text-label-md font-semibold text-secondary hover:underline">Apply Now &rarr;</button>
+            </div>
+          </div>
+
+          <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline/10 shadow-sm hover:shadow-xl transition-all reveal-on-scroll" style="transition-delay: 160ms;">
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-secondary-container/20 text-on-secondary-container flex items-center justify-center">
+                <span class="material-symbols-outlined text-2xl">trending_up</span>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-surface-container text-xs font-bold text-secondary">410 Members</span>
+            </div>
+            <h3 class="text-headline-sm font-headline font-bold text-on-surface mb-2">Finance &amp; Investment Society</h3>
+            <p class="text-body-sm text-on-surface-variant mb-4">Student-managed portfolio fund, quantitative algorithmic trading simulations, and guest Wall Street talks.</p>
+            <div class="flex items-center justify-between pt-4 border-t border-outline/10">
+              <span class="text-xs text-on-surface-variant">Meets Mondays &bull; Trading Lab</span>
+              <button onclick="showToast('Applied to join Finance & Investment Society!')" class="text-label-md font-semibold text-secondary hover:underline">Apply Now &rarr;</button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Featured Courses & Resources Section -->
+      <section id="courses" class="max-w-7xl mx-auto px-6 lg:px-12 py-space-xl scroll-mt-24">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-space-lg gap-space-md reveal-on-scroll">
+          <div>
+            <span class="text-label-md text-secondary uppercase tracking-widest block mb-space-xs font-semibold">Curated Excellence</span>
+            <h2 class="text-headline-lg text-on-surface font-headline">Featured Courses &amp; Resources</h2>
+            <p class="text-body-md text-on-surface-variant max-w-xl mt-1">Accelerate your degree with flagship subjects taught by world-renowned instructors.</p>
+          </div>
+          <button onclick="openEnrollModal('General Catalog Program')" class="text-label-lg font-medium text-on-surface hover:text-secondary transition-colors flex items-center gap-space-xs">
+            <span>Browse all 180+ programs</span>
+            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg">
+          
+          <!-- Course 1 -->
+          <div class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border border-outline/10 flex flex-col group reveal-on-scroll">
+            <div class="h-52 w-full bg-cover bg-center relative overflow-hidden" 
+                 style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDpl3OWjELglw3OMjJGAZ41QjN5puXG9n5zrLVvpYO8D_3ppOjRXbtLORy9Slhk7GgNkm7VcCUdAxSNvfV8ntkch7hTG5sE8d9ZAoCGpLiE4St4514OTpP5XYPe_4B3WuswjKZeT9wBkQ9CDYFi9MPx_ayJ7SzDvVDT-WoIsYvq47nLe8fJiBEAzqySDbUCMd1ysuei2o_58UGNDcJLRhMeu-c4yY-TtHE8eV9dDzU')">
+              <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+              <div class="absolute top-4 left-4">
+                <span class="px-3 py-1 rounded-full bg-surface/90 backdrop-blur-md text-on-surface text-label-md font-medium shadow-sm">Computer Science</span>
+              </div>
+              <div class="absolute top-4 right-4 bg-black/60 backdrop-blur-md text-amber-300 px-2.5 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
+                <span>★ 4.9</span>
+              </div>
+            </div>
+            <div class="p-space-lg flex flex-col flex-grow justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-space-xs text-body-sm text-on-surface-variant">
+                  <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">schedule</span> 12 Weeks</span>
+                  <span class="text-secondary font-medium">128 reviews</span>
+                </div>
+                <h3 class="text-headline-sm text-on-surface font-headline font-bold mb-space-xs group-hover:text-secondary transition-colors">Advanced Data Structures &amp; Algorithms</h3>
+                <p class="text-body-sm text-on-surface-variant mb-space-md">Master optimal algorithmic design, graph theory, distributed caches, and complex memory management techniques.</p>
+              </div>
+              <div class="pt-space-md border-t border-surface-container flex items-center justify-between">
+                <div>
+                  <p class="text-xs text-on-surface-variant">Instructor</p>
+                  <span class="text-label-lg font-bold text-on-surface">Prof. A. Sharma</span>
+                </div>
+                <button onclick="openEnrollModal('Advanced Data Structures & Algorithms')" class="px-5 py-2.5 rounded-xl bg-primary text-on-primary text-label-md font-medium hover:bg-secondary hover:text-on-secondary transition-all active:scale-95 shadow-sm">Enroll Now</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Course 2 -->
+          <div class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border border-outline/10 flex flex-col group reveal-on-scroll" style="transition-delay: 100ms;">
+            <div class="h-52 w-full bg-cover bg-center relative overflow-hidden" 
+                 style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDaL1Aa5qUIlS8wlVxZ6Xt2ujXZ84snBHdmwJlMXkU8bp23NnA2zpdjyfrR65FMbe_6dYRm4hZRzUlKleI-rLK_rShF0d5ROUSEaYHcV0DRhoNmFH7Kr2aaf50IEAJ79zYKMqQa3iuvRa76PgfQNldSOGTqh8BPEOg6aOre2tjpJDCfgbD17a7lf4iGMruZZ2IdJ2o_zfVNjp8MKeOIEV8l8TtvkqauA26xaq-7ceI')">
+              <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+              <div class="absolute top-4 left-4">
+                <span class="px-3 py-1 rounded-full bg-surface/90 backdrop-blur-md text-on-surface text-label-md font-medium shadow-sm">Architecture</span>
+              </div>
+              <div class="absolute top-4 right-4 bg-black/60 backdrop-blur-md text-amber-300 px-2.5 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
+                <span>★ 4.8</span>
+              </div>
+            </div>
+            <div class="p-space-lg flex flex-col flex-grow justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-space-xs text-body-sm text-on-surface-variant">
+                  <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">schedule</span> 10 Weeks</span>
+                  <span class="text-secondary font-medium">95 reviews</span>
+                </div>
+                <h3 class="text-headline-sm text-on-surface font-headline font-bold mb-space-xs group-hover:text-secondary transition-colors">Sustainable Urban Design &amp; Planning</h3>
+                <p class="text-body-sm text-on-surface-variant mb-space-md">Explore ecological frameworks, green building standards, parametric modeling, and resilient future urban ecosystems.</p>
+              </div>
+              <div class="pt-space-md border-t border-surface-container flex items-center justify-between">
+                <div>
+                  <p class="text-xs text-on-surface-variant">Instructor</p>
+                  <span class="text-label-lg font-bold text-on-surface">Dr. M. Varma</span>
+                </div>
+                <button onclick="openEnrollModal('Sustainable Urban Design & Planning')" class="px-5 py-2.5 rounded-xl bg-primary text-on-primary text-label-md font-medium hover:bg-secondary hover:text-on-secondary transition-all active:scale-95 shadow-sm">Enroll Now</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Course 3 -->
+          <div class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border border-outline/10 flex flex-col group reveal-on-scroll" style="transition-delay: 200ms;">
+            <div class="h-52 w-full bg-cover bg-center relative overflow-hidden" 
+                 style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA6-yI698qiTiz8Djz3AXwBRQ_4bYGsl9sgtfHNSsFuF66odNA1LAC5LBFI_ocvRijVZNKbOOeVGQksFC8rQPjSWa1DdCmJpi-1epK9peKNMLoM8P50olmKfj-rASORZfZ3rMJr4_uGFNsGZkf6FdJmXWN3RrEKVeIbMr9lt8mVkE220097oXXTzHtJXLJdQwVuZy0TmWNluQUyioSvkCwZJ5HClVqmTzR85hTJPkQ')">
+              <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+              <div class="absolute top-4 left-4">
+                <span class="px-3 py-1 rounded-full bg-surface/90 backdrop-blur-md text-on-surface text-label-md font-medium shadow-sm">Economics</span>
+              </div>
+              <div class="absolute top-4 right-4 bg-black/60 backdrop-blur-md text-amber-300 px-2.5 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
+                <span>★ 5.0</span>
+              </div>
+            </div>
+            <div class="p-space-lg flex flex-col flex-grow justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-space-xs text-body-sm text-on-surface-variant">
+                  <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">schedule</span> 8 Weeks</span>
+                  <span class="text-secondary font-medium">210 reviews</span>
+                </div>
+                <h3 class="text-headline-sm text-on-surface font-headline font-bold mb-space-xs group-hover:text-secondary transition-colors">Macroeconomic Policy &amp; Global Markets</h3>
+                <p class="text-body-sm text-on-surface-variant mb-space-md">Analyze central banking policies, fiscal levers, international trade dynamics, and global monetary policy.</p>
+              </div>
+              <div class="pt-space-md border-t border-surface-container flex items-center justify-between">
+                <div>
+                  <p class="text-xs text-on-surface-variant">Instructor</p>
+                  <span class="text-label-lg font-bold text-on-surface">Prof. R. Iyer</span>
+                </div>
+                <button onclick="openEnrollModal('Macroeconomic Policy & Global Markets')" class="px-5 py-2.5 rounded-xl bg-primary text-on-primary text-label-md font-medium hover:bg-secondary hover:text-on-secondary transition-all active:scale-95 shadow-sm">Enroll Now</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Academic Calendar Section -->
+      <section id="calendar" class="max-w-7xl mx-auto px-6 lg:px-12 py-space-xl scroll-mt-24">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-space-lg gap-space-md reveal-on-scroll">
+          <div>
+            <span class="text-label-md text-secondary uppercase tracking-widest block mb-space-xs font-semibold">Semester Milestones</span>
+            <h2 class="text-headline-lg text-on-surface font-headline">Academic Calendar &amp; Important Dates</h2>
+            <p class="text-body-md text-on-surface-variant max-w-xl mt-1">Stay updated with examination windows, holiday closures, add/drop deadlines, and graduation ceremonies.</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <button onclick="downloadCalendarICS()" class="px-4 py-2 rounded-lg bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-medium text-xs border border-outline/20 transition-all flex items-center gap-2">
+              <span class="material-symbols-outlined text-base">download</span>
+              <span>Export iCal (.ics)</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-surface-container-lowest rounded-3xl p-6 lg:p-8 border border-outline/10 shadow-lg reveal-on-scroll">
+          
+          <!-- Event items list -->
+          <div class="divide-y divide-outline/10 space-y-4">
+            
+            <div class="pt-4 first:pt-0 flex flex-col md:flex-row md:items-center justify-between gap-4 group">
+              <div class="flex items-start gap-4">
+                <div class="w-16 h-16 rounded-2xl bg-secondary-container/20 text-on-secondary-container flex flex-col items-center justify-center font-headline font-bold flex-shrink-0 group-hover:bg-secondary-container transition-colors">
+                  <span class="text-xs uppercase tracking-wider font-sans font-semibold">Nov</span>
+                  <span class="text-2xl leading-none">28</span>
+                </div>
+                <div>
+                  <div class="flex items-center gap-2 mb-1">
+                    <span class="px-2.5 py-0.5 rounded-full bg-red-100 text-red-800 text-[11px] font-bold">Important Deadline</span>
+                    <span class="text-xs text-on-surface-variant">All Undergraduate Faculties</span>
+                  </div>
+                  <h4 class="text-base font-headline font-bold text-on-surface">Fall Semester Thesis &amp; Capstone Final Draft Submission</h4>
+                  <p class="text-body-sm text-on-surface-variant">Submit digital copies via the Student Portal by 11:59 PM EST.</p>
+                </div>
+              </div>
+              <button onclick="showToast('Event added to your personal schedule!')" class="self-start md:self-center px-4 py-2 rounded-xl bg-surface-container hover:bg-secondary-container hover:text-on-secondary-container text-xs font-semibold text-on-surface transition-all flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-sm">notification_add</span>
+                <span>Set Reminder</span>
+              </button>
+            </div>
+
+            <div class="pt-4 flex flex-col md:flex-row md:items-center justify-between gap-4 group">
+              <div class="flex items-start gap-4">
+                <div class="w-16 h-16 rounded-2xl bg-secondary-container/20 text-on-secondary-container flex flex-col items-center justify-center font-headline font-bold flex-shrink-0 group-hover:bg-secondary-container transition-colors">
+                  <span class="text-xs uppercase tracking-wider font-sans font-semibold">Dec</span>
+                  <span class="text-2xl leading-none">10</span>
+                </div>
+                <div>
+                  <div class="flex items-center gap-2 mb-1">
+                    <span class="px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-900 text-[11px] font-bold">Examinations</span>
+                    <span class="text-xs text-on-surface-variant">Dec 10 - Dec 21, 2024</span>
+                  </div>
+                  <h4 class="text-base font-headline font-bold text-on-surface">Fall Semester Final Examination Window</h4>
+                  <p class="text-body-sm text-on-surface-variant">Examination halls open 30 minutes prior to exam slot commencement.</p>
+                </div>
+              </div>
+              <button onclick="showToast('Exam schedule reminder saved!')" class="self-start md:self-center px-4 py-2 rounded-xl bg-surface-container hover:bg-secondary-container hover:text-on-secondary-container text-xs font-semibold text-on-surface transition-all flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-sm">notification_add</span>
+                <span>Set Reminder</span>
+              </button>
+            </div>
+
+            <div class="pt-4 flex flex-col md:flex-row md:items-center justify-between gap-4 group">
+              <div class="flex items-start gap-4">
+                <div class="w-16 h-16 rounded-2xl bg-secondary-container/20 text-on-secondary-container flex flex-col items-center justify-center font-headline font-bold flex-shrink-0 group-hover:bg-secondary-container transition-colors">
+                  <span class="text-xs uppercase tracking-wider font-sans font-semibold">Dec</span>
+                  <span class="text-2xl leading-none">23</span>
+                </div>
+                <div>
+                  <div class="flex items-center gap-2 mb-1">
+                    <span class="px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-900 text-[11px] font-bold">Campus Holiday</span>
+                    <span class="text-xs text-on-surface-variant">Dec 23 - Jan 06</span>
+                  </div>
+                  <h4 class="text-base font-headline font-bold text-on-surface">Winter Recess &amp; Campus Holiday Closure</h4>
+                  <p class="text-body-sm text-on-surface-variant">Administrative offices operate on limited digital remote assistance.</p>
+                </div>
+              </div>
+              <button onclick="showToast('Holiday calendar saved!')" class="self-start md:self-center px-4 py-2 rounded-xl bg-surface-container hover:bg-secondary-container hover:text-on-secondary-container text-xs font-semibold text-on-surface transition-all flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-sm">notification_add</span>
+                <span>Set Reminder</span>
+              </button>
+            </div>
+
+            <div class="pt-4 flex flex-col md:flex-row md:items-center justify-between gap-4 group">
+              <div class="flex items-start gap-4">
+                <div class="w-16 h-16 rounded-2xl bg-secondary-container/20 text-on-secondary-container flex flex-col items-center justify-center font-headline font-bold flex-shrink-0 group-hover:bg-secondary-container transition-colors">
+                  <span class="text-xs uppercase tracking-wider font-sans font-semibold">Jan</span>
+                  <span class="text-2xl leading-none">12</span>
+                </div>
+                <div>
+                  <div class="flex items-center gap-2 mb-1">
+                    <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-900 text-[11px] font-bold">Registration</span>
+                    <span class="text-xs text-on-surface-variant">Spring 2025</span>
+                  </div>
+                  <h4 class="text-base font-headline font-bold text-on-surface">Spring Semester Course Add / Drop Period Begins</h4>
+                  <p class="text-body-sm text-on-surface-variant">Online course enrollment portal opens at 08:00 AM EST for senior scholars.</p>
+                </div>
+              </div>
+              <button onclick="showToast('Registration date added!')" class="self-start md:self-center px-4 py-2 rounded-xl bg-surface-container hover:bg-secondary-container hover:text-on-secondary-container text-xs font-semibold text-on-surface transition-all flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-sm">notification_add</span>
+                <span>Set Reminder</span>
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Statistics & Trust Banner -->
+      <section class="bg-surface-container-low py-space-xl my-space-xl border-y border-outline/10">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 grid grid-cols-2 md:grid-cols-4 gap-space-lg text-center">
+          
+          <div class="p-space-md reveal-on-scroll">
+            <p class="text-headline-xl font-headline font-bold text-secondary mb-space-xs counter" data-target="15000" data-suffix="+">0</p>
+            <p class="text-label-lg font-medium text-on-surface-variant">Active Students</p>
+          </div>
+
+          <div class="p-space-md reveal-on-scroll" style="transition-delay: 80ms;">
+            <p class="text-headline-xl font-headline font-bold text-secondary mb-space-xs counter" data-target="250" data-suffix="+">0</p>
+            <p class="text-label-lg font-medium text-on-surface-variant">Expert Faculty</p>
+          </div>
+
+          <div class="p-space-md reveal-on-scroll" style="transition-delay: 160ms;">
+            <p class="text-headline-xl font-headline font-bold text-secondary mb-space-xs counter" data-target="98" data-suffix="%">0</p>
+            <p class="text-label-lg font-medium text-on-surface-variant">Placement Rate</p>
+          </div>
+
+          <div class="p-space-md reveal-on-scroll" style="transition-delay: 240ms;">
+            <p class="text-headline-xl font-headline font-bold text-secondary mb-space-xs counter" data-target="40" data-suffix="+">0</p>
+            <p class="text-label-lg font-medium text-on-surface-variant">Global Partners</p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Campus Newsletter / Stay Connected -->
+      <section class="max-w-5xl mx-auto px-6 lg:px-12 pb-space-xl text-center reveal-on-scroll">
+        <div class="bg-primary-container text-on-primary-container rounded-3xl p-8 lg:p-12 relative overflow-hidden shadow-2xl">
+          <div class="absolute -right-16 -bottom-16 w-64 h-64 rounded-full bg-secondary-container/10 blur-2xl pointer-events-none"></div>
+          <span class="text-xs uppercase tracking-widest text-secondary-fixed font-semibold mb-2 block">Never Miss a Milestone</span>
+          <h3 class="text-headline-lg font-headline font-bold text-on-primary mb-3">Subscribe to Excellence Digest</h3>
+          <p class="text-body-md text-primary-fixed-dim max-w-lg mx-auto mb-6">Receive academic alerts, exam notifications, scholarship openings, and guest lectures directly in your inbox.</p>
+          
+          <form onsubmit="handleSubscribe(event)" class="max-w-md mx-auto flex flex-col sm:flex-row gap-2">
+            <input type="email" required placeholder="Enter student or faculty email..." class="flex-grow px-4 py-3 rounded-xl bg-surface/10 border border-outline/30 text-on-primary placeholder:text-primary-fixed-dim/60 focus:outline-none focus:ring-2 focus:ring-secondary-container text-sm">
+            <button type="submit" class="px-6 py-3 rounded-xl bg-secondary-container text-on-secondary-container font-semibold text-sm hover:scale-105 active:scale-95 transition-all shadow-md">
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="w-full bg-surface-container-low py-space-xl border-t border-outline/10 relative z-10">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+        <div class="space-y-3">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-lg bg-primary-container text-secondary-container flex items-center justify-center font-bold">
+              <span class="material-symbols-outlined text-lg">school</span>
+            </div>
+            <span class="font-headline font-bold text-lg text-on-surface">Excellence University</span>
+          </div>
+          <p class="text-xs text-on-surface-variant leading-relaxed">
+            Committed to world-class learning, cutting-edge scholarly research, and fostering leaders for a progressive society.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-bold text-on-surface uppercase tracking-wider mb-3">Quick Navigation</h4>
+          <ul class="space-y-2 text-xs text-on-surface-variant">
+            <li><a href="#home" class="hover:text-secondary transition-colors">Campus Home</a></li>
+            <li><a href="#office" class="hover:text-secondary transition-colors">Administrative Services</a></li>
+            <li><a href="#teachers" class="hover:text-secondary transition-colors">Faculty Directory</a></li>
+            <li><a href="#students" class="hover:text-secondary transition-colors">Student Hub &amp; Clubs</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-bold text-on-surface uppercase tracking-wider mb-3">Resources &amp; Support</h4>
+          <ul class="space-y-2 text-xs text-on-surface-variant">
+            <li><a href="#calendar" class="hover:text-secondary transition-colors">Academic Schedules</a></li>
+            <li><a href="#courses" class="hover:text-secondary transition-colors">Degree Programs</a></li>
+            <li><a href="javascript:void(0)" onclick="openAppointmentModal('IT Helpdesk')" class="hover:text-secondary transition-colors">Campus IT Helpdesk</a></li>
+            <li><a href="javascript:void(0)" onclick="openAppointmentModal('Library Resources')" class="hover:text-secondary transition-colors">Digital Library Catalog</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-bold text-on-surface uppercase tracking-wider mb-3">Campus Contact</h4>
+          <div class="space-y-2 text-xs text-on-surface-variant">
+            <p>100 University Avenue, Cambridge Campus</p>
+            <p>Direct: +1 (800) 555-EXCEL</p>
+            <p>Admissions: admissions@excellence.edu</p>
+            <div class="flex gap-3 pt-2 text-on-surface">
+              <span class="material-symbols-outlined cursor-pointer hover:text-secondary transition-colors">public</span>
+              <span class="material-symbols-outlined cursor-pointer hover:text-secondary transition-colors">alternate_email</span>
+              <span class="material-symbols-outlined cursor-pointer hover:text-secondary transition-colors">share</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-8 border-t border-outline/10 text-center text-on-surface-variant text-body-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+        <span>&copy; 2024-2025 Excellence University. All rights reserved.</span>
+        <div class="flex gap-4 text-xs">
+          <a href="#" class="hover:underline">Privacy Policy</a>
+          <a href="#" class="hover:underline">Terms of Service</a>
+          <a href="#" class="hover:underline">Accessibility Statement</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back To Top Floating Button -->
+  <button id="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-xl opacity-0 pointer-events-none transition-all duration-300 hover:bg-secondary hover:text-on-secondary z-40" aria-label="Back to Top">
+    <span class="material-symbols-outlined">arrow_upward</span>
+  </button>
+
+  <!-- Interactive Enrollment Modal -->
+  <div id="enroll-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="bg-surface-container-lowest w-full max-w-lg rounded-3xl p-6 lg:p-8 shadow-2xl border border-outline/10 transform scale-95 transition-transform duration-300" id="enroll-modal-card">
+      <div class="flex items-center justify-between mb-4">
+        <div class="flex items-center gap-2">
+          <div class="w-10 h-10 rounded-xl bg-secondary-container/30 text-on-secondary-container flex items-center justify-center">
+            <span class="material-symbols-outlined">school</span>
+          </div>
+          <div>
+            <h3 class="text-xl font-headline font-bold text-on-surface">Course Enrollment</h3>
+            <p class="text-xs text-on-surface-variant">Complete to register for the upcoming semester</p>
+          </div>
+        </div>
+        <button onclick="closeEnrollModal()" class="w-8 h-8 rounded-full hover:bg-surface-container flex items-center justify-center text-on-surface-variant transition-colors">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+
+      <form onsubmit="handleEnrollSubmit(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-on-surface mb-1">Selected Program</label>
+          <input id="enroll-course-name" type="text" readonly class="w-full px-4 py-2.5 rounded-xl bg-surface-container text-on-surface text-sm font-medium border border-outline/10">
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-semibold text-on-surface mb-1">Full Name *</label>
+            <input required type="text" placeholder="John Doe" class="w-full px-4 py-2.5 rounded-xl bg-surface-container-low text-on-surface text-sm border border-outline/20 focus:outline-none focus:ring-2 focus:ring-secondary-container">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-on-surface mb-1">Student ID / Roll No *</label>
+            <input required type="text" placeholder="EXU-2024-912" class="w-full px-4 py-2.5 rounded-xl bg-surface-container-low text-on-surface text-sm border border-outline/20 focus:outline-none focus:ring-2 focus:ring-secondary-container">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-on-surface mb-1">University Email Address *</label>
+          <input required type="email" placeholder="student@excellence.edu" class="w-full px-4 py-2.5 rounded-xl bg-surface-container-low text-on-surface text-sm border border-outline/20 focus:outline-none focus:ring-2 focus:ring-secondary-container">
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-on-surface mb-1">Semester Term</label>
+          <select class="w-full px-4 py-2.5 rounded-xl bg-surface-container-low text-on-surface text-sm border border-outline/20 focus:outline-none focus:ring-2 focus:ring-secondary-container">
+            <option>Spring Semester 2025 (Standard Cohort)</option>
+            <option>Summer Intensive Session 2025</option>
+            <option>Fall Semester 2025</option>
+          </select>
+        </div>
+
+        <div class="pt-2 flex items-center justify-end gap-3">
+          <button type="button" onclick="closeEnrollModal()" class="px-5 py-2.5 rounded-xl text-xs font-semibold text-on-surface-variant hover:bg-surface-container transition-colors">Cancel</button>
+          <button type="submit" class="px-6 py-2.5 rounded-xl bg-secondary-container text-on-secondary-container font-semibold text-xs hover:scale-105 active:scale-95 transition-all shadow-md">Confirm Enrollment</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Interactive Appointment Modal -->
+  <div id="appointment-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="bg-surface-container-lowest w-full max-w-lg rounded-3xl p-6 lg:p-8 shadow-2xl border border-outline/10 transform scale-95 transition-transform duration-300" id="appointment-modal-card">
+      <div class="flex items-center justify-between mb-4">
+        <div class="flex items-center gap-2">
+          <div class="w-10 h-10 rounded-xl bg-secondary-container/30 text-on-secondary-container flex items-center justify-center">
+            <span class="material-symbols-outlined">event_available</span>
+          </div>
+          <div>
+            <h3 class="text-xl font-headline font-bold text-on-surface">Book an Appointment</h3>
+            <p class="text-xs text-on-surface-variant">Reserve time with faculty or administrative office</p>
+          </div>
+        </div>
+        <button onclick="closeAppointmentModal()" class="w-8 h-8 rounded-full hover:bg-surface-container flex items-center justify-center text-on-surface-variant transition-colors">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+
+      <form onsubmit="handleAppointmentSubmit(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-on-surface mb-1">Target Department or Professor</label>
+          <input id="appointment-target" type="text" readonly class="w-full px-4 py-2.5 rounded-xl bg-surface-container text-on-surface text-sm font-medium border border-outline/10">
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-semibold text-on-surface mb-1">Preferred Date *</label>
+            <input required type="date" class="w-full px-4 py-2.5 rounded-xl bg-surface-container-low text-on-surface text-sm border border-outline/20 focus:outline-none focus:ring-2 focus:ring-secondary-container">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-on-surface mb-1">Time Slot *</label>
+            <select class="w-full px-4 py-2.5 rounded-xl bg-surface-container-low text-on-surface text-sm border border-outline/20 focus:outline-none focus:ring-2 focus:ring-secondary-container">
+              <option>10:00 AM - 10:30 AM</option>
+              <option>11:30 AM - 12:00 PM</option>
+              <option>02:00 PM - 02:30 PM</option>
+              <option>03:30 PM - 04:00 PM</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-on-surface mb-1">Your Full Name &amp; Email *</label>
+          <input required type="text" placeholder="Alex Morgan (alex@excellence.edu)" class="w-full px-4 py-2.5 rounded-xl bg-surface-container-low text-on-surface text-sm border border-outline/20 focus:outline-none focus:ring-2 focus:ring-secondary-container">
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-on-surface mb-1">Reason for Visit</label>
+          <textarea rows="2" placeholder="e.g. Discuss course prerequisites, thesis topic approval, or financial aid documentation..." class="w-full px-4 py-2.5 rounded-xl bg-surface-container-low text-on-surface text-sm border border-outline/20 focus:outline-none focus:ring-2 focus:ring-secondary-container"></textarea>
+        </div>
+
+        <div class="pt-2 flex items-center justify-end gap-3">
+          <button type="button" onclick="closeAppointmentModal()" class="px-5 py-2.5 rounded-xl text-xs font-semibold text-on-surface-variant hover:bg-surface-container transition-colors">Cancel</button>
+          <button type="submit" class="px-6 py-2.5 rounded-xl bg-secondary-container text-on-secondary-container font-semibold text-xs hover:scale-105 active:scale-95 transition-all shadow-md">Confirm Booking</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 md:left-auto md:right-6 md:translate-x-0 bg-primary-container text-on-primary px-5 py-3.5 rounded-2xl shadow-2xl border border-secondary-container/40 flex items-center gap-3 z-50 transition-all duration-300 opacity-0 pointer-events-none translate-y-4">
+    <span class="material-symbols-outlined text-secondary-container text-xl" id="toast-icon">check_circle</span>
+    <span id="toast-message" class="text-sm font-medium">Notification triggered!</span>
+  </div>
+
+  <!-- JavaScript for Interactions & Animations -->
+  <script>
+    // 1. Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuBtn?.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // 2. Active Navigation Highlight on Scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      const scrollY = window.pageYOffset;
+
+      // Header shadow adjustment
+      const header = document.getElementById('main-header');
+      if (scrollY > 40) {
+        header.classList.add('shadow-md', 'bg-surface/95');
+      } else {
+        header.classList.remove('shadow-md', 'bg-surface/95');
+      }
+
+      // Back to top button visibility
+      const backToTop = document.getElementById('back-to-top');
+      if (scrollY > 400) {
+        backToTop.classList.remove('opacity-0', 'pointer-events-none');
+        backToTop.classList.add('opacity-100', 'pointer-events-auto');
+      } else {
+        backToTop.classList.add('opacity-0', 'pointer-events-none');
+        backToTop.classList.remove('opacity-100', 'pointer-events-auto');
+      }
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 120;
+        const sectionHeight = section.offsetHeight;
+        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        if (link.getAttribute('data-target') === current) {
+          link.classList.add('bg-secondary-container', 'text-on-secondary-container', 'shadow-sm');
+          link.classList.remove('text-on-surface-variant');
+        } else {
+          link.classList.remove('bg-secondary-container', 'text-on-secondary-container', 'shadow-sm');
+          link.classList.add('text-on-surface-variant');
+        }
+      });
+    });
+
+    // 3. Scroll Reveal Animation via IntersectionObserver
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      root: null,
+      threshold: 0.12,
+      rootMargin: "0px 0px -40px 0px"
+    });
+
+    document.querySelectorAll('.reveal-on-scroll').forEach(el => {
+      revealObserver.observe(el);
+    });
+
+    // 4. Animated Numerical Counters
+    let counted = false;
+    const counters = document.querySelectorAll('.counter');
+    const statsSection = counters[0]?.closest('section');
+
+    if (statsSection) {
+      const statsObserver = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && !counted) {
+          counted = true;
+          counters.forEach(counter => {
+            const target = parseInt(counter.getAttribute('data-target'), 10);
+            const suffix = counter.getAttribute('data-suffix') || '';
+            const duration = 1800;
+            const startTime = performance.now();
+
+            function updateCounter(currentTime) {
+              const elapsed = currentTime - startTime;
+              const progress = Math.min(elapsed / duration, 1);
+              // Ease out quart
+              const easeOut = 1 - Math.pow(1 - progress, 4);
+              const currentValue = Math.floor(easeOut * target);
+              
+              if (target >= 1000) {
+                counter.textContent = (currentValue >= 1000 ? Math.floor(currentValue / 1000) + 'k' : currentValue) + suffix;
+              } else {
+                counter.textContent = currentValue + suffix;
+              }
+
+              if (progress < 1) {
+                requestAnimationFrame(updateCounter);
+              } else {
+                if (target >= 1000) {
+                  counter.textContent = Math.floor(target / 1000) + 'k' + suffix;
+                } else {
+                  counter.textContent = target + suffix;
+                }
+              }
+            }
+
+            requestAnimationFrame(updateCounter);
+          });
+        }
+      }, { threshold: 0.3 });
+
+      statsObserver.observe(statsSection);
+    }
+
+    // 5. Toast Notification
+    let toastTimeout;
+    function showToast(message, icon = 'check_circle') {
+      const toast = document.getElementById('toast');
+      const toastMessage = document.getElementById('toast-message');
+      const toastIcon = document.getElementById('toast-icon');
+
+      if (!toast) return;
+
+      toastMessage.textContent = message;
+      toastIcon.textContent = icon;
+
+      toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+      toast.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
+
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+        toast.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
+      }, 3500);
+    }
+
+    // 6. Interactive Modals: Enrollment
+    function openEnrollModal(courseName) {
+      const modal = document.getElementById('enroll-modal');
+      const card = document.getElementById('enroll-modal-card');
+      const input = document.getElementById('enroll-course-name');
+      if (input) input.value = courseName;
+
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      modal.classList.add('opacity-100', 'pointer-events-auto');
+      card.classList.remove('scale-95');
+      card.classList.add('scale-100');
+    }
+
+    function closeEnrollModal() {
+      const modal = document.getElementById('enroll-modal');
+      const card = document.getElementById('enroll-modal-card');
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      modal.classList.remove('opacity-100', 'pointer-events-auto');
+      card.classList.add('scale-95');
+      card.classList.remove('scale-100');
+    }
+
+    function handleEnrollSubmit(e) {
+      e.preventDefault();
+      const course = document.getElementById('enroll-course-name')?.value || 'Course';
+      closeEnrollModal();
+      showToast(`Successfully enrolled in ${course}! Check your email for syllabus details.`);
+    }
+
+    // 7. Interactive Modals: Appointment
+    function openAppointmentModal(targetName) {
+      const modal = document.getElementById('appointment-modal');
+      const card = document.getElementById('appointment-modal-card');
+      const input = document.getElementById('appointment-target');
+      if (input) input.value = targetName;
+
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      modal.classList.add('opacity-100', 'pointer-events-auto');
+      card.classList.remove('scale-95');
+      card.classList.add('scale-100');
+    }
+
+    function closeAppointmentModal() {
+      const modal = document.getElementById('appointment-modal');
+      const card = document.getElementById('appointment-modal-card');
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      modal.classList.remove('opacity-100', 'pointer-events-auto');
+      card.classList.add('scale-95');
+      card.classList.remove('scale-100');
+    }
+
+    function handleAppointmentSubmit(e) {
+      e.preventDefault();
+      const target = document.getElementById('appointment-target')?.value || 'Office';
+      closeAppointmentModal();
+      showToast(`Appointment confirmed with ${target}! Calendar invite sent.`);
+    }
+
+    function openPortalModal() {
+      showToast('Student & Faculty SSO Portal launched! Redirecting to auth...', 'lock');
+    }
+
+    // 8. Faculty Filter
+    function filterFaculty(dept, btn) {
+      document.querySelectorAll('.faculty-filter-btn').forEach(b => {
+        b.classList.remove('bg-secondary-container', 'text-on-secondary-container');
+        b.classList.add('bg-surface-container', 'text-on-surface-variant');
+      });
+      btn.classList.add('bg-secondary-container', 'text-on-secondary-container');
+      btn.classList.remove('bg-surface-container', 'text-on-surface-variant');
+
+      const cards = document.querySelectorAll('.faculty-card');
+      cards.forEach(card => {
+        if (dept === 'all' || card.getAttribute('data-dept') === dept) {
+          card.style.display = 'flex';
+          card.style.opacity = '1';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // 9. Calendar Export Simulation
+    function downloadCalendarICS() {
+      const icsContent = "BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//Excellence University//Academic Calendar//EN\nBEGIN:VEVENT\nSUMMARY:Excellence University Fall Finals\nDESCRIPTION:Examination period for all undergraduate programs\nDTSTART:20241210T090000Z\nDTEND:20241221T170000Z\nEND:VEVENT\nEND:VCALENDAR";
+      const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = 'excellence_academic_calendar.ics';
+      link.click();
+      showToast('Calendar .ics file downloaded successfully!', 'download_done');
+    }
+
+    // 10. Newsletter Subscribe
+    function handleSubscribe(e) {
+      e.preventDefault();
+      showToast('Thank you for subscribing to the Excellence Digest!');
+      e.target.reset();
+    }
+
+    // Close modals on Escape key or outside click
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeEnrollModal();
+        closeAppointmentModal();
+      }
+    });
+
+    document.getElementById('enroll-modal')?.addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) closeEnrollModal();
+    });
+
+    document.getElementById('appointment-modal')?.addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) closeAppointmentModal();
+    });
+
+    // 11. Subtle Parallax effect on Hero Card
+    const heroCard = document.getElementById('hero-card');
+    if (heroCard) {
+      heroCard.addEventListener('mousemove', (e) => {
+        const rect = heroCard.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        heroCard.style.transform = `perspective(1000px) rotateY(${x * 0.02}deg) rotateX(${-y * 0.02}deg) translateY(-4px)`;
+      });
+      heroCard.addEventListener('mouseleave', () => {
+        heroCard.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg) translateY(0px)';
+      });
+    }
+  </script>
+</body>
+</html>
+
